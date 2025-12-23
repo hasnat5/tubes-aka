@@ -37,6 +37,7 @@ function innerRecursive(matrix, n, column = 0, row = 0, step) {
             if(row === 0) return matrix[column][row] * innerRecursive(matrix, n, column+1, n-1, -1);
             else return matrix[column][row] * innerRecursive(matrix, n, column+1, row-1, -1);
         }
+        else return 1;
     }
 }
 
@@ -52,26 +53,3 @@ function recursive(matrix, n, row, step = null) {
     }
     else return recursive(matrix, n, 0, 1) - recursive(matrix, n, 0, -1);
 }
-
-// let matrix = [
-//     [
-//         1, 2, 3
-//     ],
-//     [
-//         20, 7, 6
-//     ],
-//     [
-//         21, 10, 11
-//     ]
-// ];
-
-// console.log(recursive(matrix, matrix.length));
-// console.log(iterative(matrix, matrix.length));
-
-/**
- * 
- * (0 0) (0 1) (0 2) 
- * (1 0) (1 1) (1 2)
- * (2 0) (2 1) (2 2)
- * 
- */
