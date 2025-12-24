@@ -37,33 +37,23 @@ def det_iterative(matrix):
     
     return left - right
 
-def inner_recursive(matrix, n, column=0, row=0, step=1):
-    if column == n:
+def inner_recursive(matrix, column=0, row=0, step=1):
+    if column == 3:
         return 1
-    
-    if step == 1:
-        if row == n - 1:
-            return matrix[column][row] * inner_recursive(matrix, n, column + 1, 0, 1)
-        else:
-            return matrix[column][row] * inner_recursive(matrix, n, column + 1, row + 1, 1)
-    elif step == -1:
-        if row == 0:
-            return matrix[column][row] * inner_recursive(matrix, n, column + 1, n - 1, -1)
-        else:
-            return matrix[column][row] * inner_recursive(matrix, n, column + 1, row - 1, -1)
-
-def det_recursive_helper(matrix, n, row, step):
-    """
-    Fungsi pembantu untuk rekursi determinan
-    """
-    if row == n - 1:
-        return inner_recursive(matrix, n, 0, row, step)
     else:
-        return inner_recursive(matrix, n, 0, row, step) + det_recursive_helper(matrix, n, row + 1, step)
+        if (step == 1 and row == 2) or (step == -1 and row == 0):
+            return matrix[column][row] * inner_recursive(matrix, column + 1, 0 if step == 1 else 2, step)
+        else:
+            return matrix[column][row] * inner_recursive(matrix, column + 1, row + 1 if step == 1 else row - 1, step)
 
-def det_recursive(matrix):
-    n = len(matrix)
-    return det_recursive_helper(matrix, n, 0, 1) - det_recursive_helper(matrix, n, 0, -1)
+def det_recursive(matrix, row=None, step=None):
+    if step is not None:
+        if row >= 2:
+            return inner_recursive(matrix, 0, row, step)
+        else:
+            return inner_recursive(matrix, 0, row, step) + det_recursive(matrix, row + 1, step)
+    else:
+        return det_recursive(matrix, 0, 1) - det_recursive(matrix, 0, -1)
 
 # ---------- TIMING HELPER ----------
 def measure_time(func, matrix, trials=3):
