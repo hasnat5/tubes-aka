@@ -43,7 +43,7 @@ Dalam manajemen proyek software, sering ditemukan pola di mana kompleksitas fitu
 
 **Contoh**: Setelah 12 sprint = 78 fitur delivered
 
-Permasalahan ini dapat diselesaikan dengan tiga pendekatan:
+Permasalahan ini dapat diselesaikan dengan dua pendekatan:
 
 1. **Iteratif**: Loop untuk menjumlahkan setiap bilangan
 2. **Rekursif**: Fungsi yang memanggil dirinya sendiri
