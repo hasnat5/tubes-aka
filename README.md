@@ -1,19 +1,19 @@
-# ANALISIS KOMPLEKSITAS ALGORITMA ITERATIF dan REKURSIF dalam MENGHITUNG DETERMINAN MATRIKS
+# 🧮 KAJIAN EFISIENSI PROSES AKUMULASI BILANGAN ASLI BERURUTAN MENGGUNAKAN PENDEKATAN ITERATIF DAN REKURSIF
 
-Determinan matriks didefinisikan sebagai suatu nilai skalar yang dihitung dari elemen-elemen sebuah matriks persegi. Determinan banyak digunakan dalam berbagai permasalahan aljabar linear, seperti penyelesaian sistem persamaan linear, penentuan keberadaan invers matriks, serta aplikasi dalam komputasi numerik dan rekayasa.
+Penjumlahan bilangan asli berurutan merupakan operasi matematika fundamental yang sering dijumpai dalam berbagai aplikasi komputasi. Permasalahan ini melibatkan perhitungan total penjumlahan dari 1 hingga n, yang dapat dinyatakan sebagai: 1 + 2 + 3 + ... + n.
 
 ## The Problem
 
-Permasalahan yang diangkat dalam tugas besar ini adalah perhitungan determinan matriks persegi berordo n. Permasalahan ini dipilih untuk dianalisis karena dapat diselesaikan menggunakan lebih dari satu pendekatan algoritmik, khususnya pendekatan iteratif dan rekursif.
+Permasalahan yang diangkat dalam tugas besar ini adalah perhitungan penjumlahan bilangan asli dari 1 hingga n. Permasalahan ini dipilih untuk dianalisis karena dapat diselesaikan menggunakan lebih dari satu pendekatan algoritmik, khususnya pendekatan iteratif dan rekursif.
 
 Studi kasus ini dipilih dengan pertimbangan sebagai berikut:
 
 - Memiliki representasi yang dapat diimplementasikan secara iteratif menggunakan struktur perulangan.
 - Memiliki representasi yang dapat diimplementasikan secara rekursif menggunakan pemanggilan fungsi.
-- Menunjukkan perbedaan karakteristik kinerja antara pendekatan iteratif dan rekursif seiring dengan bertambahnya ukuran matriks.
+- Menunjukkan perbedaan karakteristik kinerja antara pendekatan iteratif dan rekursif seiring dengan bertambahnya ukuran input n.
 - Memungkinkan dilakukan pengukuran empiris waktu eksekusi yang jelas berdasarkan variasi ukuran masukan.
 
-Melalui studi kasus ini, analisis kompleksitas algoritma tidak hanya dilakukan secara teoretis, tetapi juga diverifikasi melalui pengujian empiris, sehingga dapat menunjukkan pentingnya pemilihan algoritma yang efisien dalam penyelesaian suatu permasalahan komputasi.
+Melalui studi kasus ini, analisis kompleksitas algoritma diverifikasi melalui pengujian empiris, sehingga dapat menunjukkan pentingnya pemilihan algoritma yang efisien dalam penyelesaian suatu permasalahan komputasi.
 
 ---
 
@@ -29,58 +29,57 @@ Melalui studi kasus ini, analisis kompleksitas algoritma tidak hanya dilakukan s
 
 ## 🎯 Studi Kasus
 
-**Perhitungan Determinan Matriks 3×3 dengan Aturan Sarrus**
+**💼 Penyelesaian Sprint dalam Manajemen Proyek**
 
-Aturan Sarrus adalah metode khusus untuk menghitung determinan matriks 3×3 dengan cara:
+Dalam manajemen proyek software, sering ditemukan pola di mana kompleksitas fitur yang diselesaikan bertambah seiring dengan sprint yang berjalan:
 
-1. Menjumlahkan hasil perkalian diagonal kiri ke kanan (positif)
-2. Mengurangi hasil perkalian diagonal kanan ke kiri (negatif)
+- Sprint 1: 1 fitur selesai
+- Sprint 2: 2 fitur selesai
+- Sprint 3: 3 fitur selesai
+- ...
+- Sprint n: n fitur selesai
 
-Rumus:
+**Total fitur setelah n sprint = 1 + 2 + 3 + ... + n**
 
-```
-det(A) = (a11×a22×a33 + a12×a23×a31 + a13×a21×a32) - (a13×a22×a31 + a11×a23×a32 + a12×a21×a33)
-```
+**Contoh**: Setelah 12 sprint = 78 fitur delivered
+
+Permasalahan ini dapat diselesaikan dengan tiga pendekatan:
+
+1. **Iteratif**: Loop untuk menjumlahkan setiap bilangan
+2. **Rekursif**: Fungsi yang memanggil dirinya sendiri
 
 ---
 
 ## ✨ Fitur Aplikasi
 
-### 1. **Input Matriks Interaktif**
+### 1. **Input Nilai n Interaktif**
 
-- Input matriks 3×3 dengan nilai default yang dapat diubah
-- Mendukung bilangan desimal
-- Nilai default:
-  ```
-  [ 2  -1   4]
-  [-4   3   0]
-  [ 5  -2   1]
-  ```
+- Input nilai n dengan number input
+- Range: 1 hingga 5000
+- Nilai default: 500
+- Warning otomatis untuk nilai n > 5000 (risiko stack overflow)
 
 ### 2. **Perbandingan Algoritma**
 
-- ✅ **Algoritma Iteratif**: Menggunakan loop untuk menghitung diagonal
+- ✅ **Algoritma Iteratif**: Menggunakan loop untuk menjumlahkan 1 hingga n
+  - Kompleksitas Waktu: O(n)
 - 🔁 **Algoritma Rekursif**: Menggunakan fungsi rekursif
-- 🔍 **Verifikasi NumPy**: Memvalidasi hasil dengan library NumPy
+  - Kompleksitas Waktu: O(n)
 
 ### 3. **Analisis Waktu Eksekusi**
 
 - Mengukur waktu rata-rata dari 3 percobaan (`measure_time`)
 - Menampilkan hasil dalam milidetik (ms)
-- Visualisasi grafik bar perbandingan
+- Visualisasi grafik bar perbandingan waktu eksekusi
 
-### 4. **Grafik Perbandingan Berbagai Jenis Matriks**
+### 4. **Grafik Perbandingan untuk Berbagai Nilai n**
 
-Menguji algoritma pada 8 jenis matriks berbeda:
+Opsi untuk menampilkan grafik runtime dari n = 1 hingga n = 500:
 
-- Input User (matriks yang diinput)
-- Matriks Identitas
-- Matriks Sparse (jarang)
-- Matriks Dense (padat)
-- Matriks Negatif
-- Matriks Campuran
-- Matriks Besar (nilai tinggi)
-- Matriks Desimal
+- Menghitung waktu eksekusi untuk setiap nilai n secara individual
+- Menampilkan trend performa kedua algoritma
+- Visualisasi perbedaan overhead antara iteratif dan rekursif
+- Grid dan legend untuk kemudahan pembacaan
 
 ---
 
@@ -88,7 +87,6 @@ Menguji algoritma pada 8 jenis matriks berbeda:
 
 - **Python 3.x**
 - **Streamlit** - Framework untuk web app interaktif
-- **NumPy** - Library komputasi numerik
 - **Matplotlib** - Library visualisasi data
 - **time** - Modul untuk pengukuran waktu eksekusi
 
@@ -99,7 +97,7 @@ Menguji algoritma pada 8 jenis matriks berbeda:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/henryemily098/tubes-aka.git
+git clone https://github.com/hasnat5/tubes-aka.git
 cd tubes-aka
 ```
 
@@ -124,7 +122,7 @@ matplotlib
 ### Jalankan Aplikasi Streamlit
 
 ```bash
-streamlit run determinan_app.py
+streamlit run bilangan_ali.py
 ```
 
 Aplikasi akan terbuka di browser pada alamat:
@@ -135,83 +133,24 @@ http://localhost:8501
 
 ---
 
-## 📊 Analisis Kompleksitas
-
-### **Algoritma Iteratif**
-
-```python
-def det_iterative(matrix):
-    # Kompleksitas Waktu: O(n²) → untuk n=3, O(9)
-    # Kompleksitas Ruang: O(1)
-```
-
-**Karakteristik:**
-
-- ✅ Lebih **efisien** dalam penggunaan memori
-- ✅ **Lebih cepat** untuk kasus sederhana
-- ✅ Tidak ada overhead pemanggilan fungsi
-- ✅ Tidak ada risiko stack overflow
-
-### **Algoritma Rekursif**
-
-```python
-def det_recursive(matrix):
-    # Kompleksitas Waktu: O(n²) → untuk n=3, O(9)
-    # Kompleksitas Ruang: O(n) → karena call stack
-```
-
-**Karakteristik:**
-
-- ✅ **Lebih elegan** dan mudah dipahami secara konseptual
-- ❌ **Overhead** pemanggilan fungsi berulang
-- ❌ Menggunakan **call stack** lebih banyak
-- ❌ Potensi **stack overflow** untuk matriks besar
-
-### **Kesimpulan Analisis**
-
-Untuk kasus determinan matriks 3×3 dengan Aturan Sarrus:
-
-- **Kompleksitas waktu teoritis sama** (keduanya O(n²))
-- **Iteratif lebih cepat dalam praktik** karena tidak ada overhead rekursi
-- **Rekursif lebih lambat** sekitar 2-5x lipat karena overhead fungsi
-
----
-
-## 📈 Hasil Pengujian (Contoh)
-
-### Perbandingan Waktu Eksekusi
-
-```
-Matrix: [[2, -1, 4], [-4, 3, 0], [5, -2, 1]]
-
-Iteratif  : 0.0023 ms
-Rekursif  : 0.0089 ms
-NumPy     : 0.0012 ms
-
-Kesimpulan: Iteratif ~3.9x lebih cepat dari Rekursif
-```
-
----
-
 ## 📂 Struktur Proyek
 
 ```
 tubes_aka/
 │
-├── determinan_app.py   # Aplikasi utama Streamlit
+├── bilangan_asli.py   # Aplikasi utama Streamlit
 ├── requirements.txt    # Dependencies Python
 ├── README.md           # Dokumentasi proyek
-└── determinan.js       # (Opsional) Implementasi JavaScript
+└── bilangan_asli.js       # (Opsional) Implementasi JavaScript
 ```
 
 ---
 
 ## 🔗 Referensi
 
-1. **Aturan Sarrus** - [Wikipedia](https://en.wikipedia.org/wiki/Rule_of_Sarrus)
-2. **Streamlit Documentation** - [docs.streamlit.io](https://docs.streamlit.io)
-3. **NumPy Documentation** - [numpy.org](https://numpy.org/doc/)
-4. **Big O Notation** - Analisis Kompleksitas Algoritma
+1. **Streamlit Documentation** - [docs.streamlit.io](https://docs.streamlit.io)
+2. **NumPy Documentation** - [numpy.org](https://numpy.org/doc/)
+3. **Big O Notation** - Analisis Kompleksitas Algoritma
 
 ---
 
